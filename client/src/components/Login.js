@@ -9,21 +9,25 @@ export default function Login({ onIdSubmit }) {
     e.preventDefault()
 
     onIdSubmit(idRef.current.value)
+
+    window.location.href = '/'
   }
 
   function createNewId() {
     onIdSubmit(uuidV4())
+
+    window.location.href = '/'
   }
 
   return (
     <Container className="align-items-center d-flex" style={{ height: '100vh' }}>
-      <Form onSubmit={handleSubmit} className="w-100">
+      <Form onSubmit={handleSubmit} className="w-25 mx-auto">
         <Form.Group>
-          <Form.Label>Enter Your Id</Form.Label>
-          <Form.Control type="text" ref={idRef} required />
-        </Form.Group>   
+          <Form.Label>Enter Your ID</Form.Label>
+          <Form.Control type="text" ref={idRef} required autoFocus />
+        </Form.Group>
         <Button type="submit" className="mr-2">Login</Button>
-        <Button onClick={createNewId} variant="secondary">Create A New Id</Button>
+        <Button onClick={createNewId} variant="secondary">Create Random ID</Button>
       </Form>
     </Container>
   )
